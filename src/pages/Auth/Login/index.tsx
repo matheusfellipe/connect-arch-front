@@ -17,7 +17,7 @@ import {
 import { selectIsAuthenticated } from '../../../redux/features/auth/authSlice';
 import { useSelector } from 'react-redux';
 
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { NotificationPlacement } from 'antd/es/notification/interface';
 import { createContext } from 'react';
 
@@ -49,10 +49,13 @@ const Login = () => {
       <BoxContainer>
         <BoxContainer>
           <div>
-            <TitleCustom level={3}>Farmácia Virtual</TitleCustom>
+            <TitleCustom level={3}>Solicite um Arquiteto</TitleCustom>
             <Space direction="vertical" />
             <ParagraphCustom>
-              Não é um parceiro TopFarm ? <a href="">Registrar agora!</a>
+              Quer ser um cliente ou um parceiro ?{' '}
+              <Link to="/register" replace>
+                Registrar agora!
+              </Link>
             </ParagraphCustom>
             <Space direction="vertical" size={'middle'} />
             <FormCustom
@@ -96,10 +99,6 @@ const Login = () => {
                 <Form.Item name="remember" valuePropName="checked" noStyle>
                   <Checkbox>Lembrar</Checkbox>
                 </Form.Item>
-
-                <PasswordForgot className="login-form-forgot" href="">
-                  Esqueci a senha
-                </PasswordForgot>
               </Form.Item>
 
               <Form.Item>

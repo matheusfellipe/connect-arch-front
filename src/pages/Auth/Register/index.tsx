@@ -6,10 +6,10 @@ import {
   ButtonCustom,
   FormCustom,
   ParagraphCustom,
-  PasswordForgot,
   TitleCustom,
 } from '../style';
 import { LogoCustom } from '../../../shared/assets/logo/style';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const onFinish = (values: string) => {
@@ -24,7 +24,10 @@ const Register = () => {
             <TitleCustom level={3}>Seja bem vindo a TopFarm!</TitleCustom>
             <Space direction="vertical" />
             <ParagraphCustom>
-              Já possui cadastro ? <a href="">Entrar na Loja!</a>
+              Já possui cadastro ?{' '}
+              <Link to="/login" replace>
+                Entrar na Loja!
+              </Link>
             </ParagraphCustom>
             <Space direction="vertical" size={'middle'} />
             <FormCustom
