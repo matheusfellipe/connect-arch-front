@@ -17,23 +17,10 @@ import {
 import { selectIsAuthenticated } from '../../../redux/features/auth/authSlice';
 import { useSelector } from 'react-redux';
 
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { useNavigate } from 'react-router-dom';
 import { NotificationPlacement } from 'antd/es/notification/interface';
 import { createContext } from 'react';
 
-const validationSchema = z.object({
-  email: z.string().min(1, { message: 'Email is required' }).email({
-    message: 'Must be a valid email',
-  }),
-  password: z
-    .string()
-    .min(6, { message: 'Password must be atleast 6 characters' }),
-});
-
-type ValidationSchema = z.infer<typeof validationSchema>;
 type Props = {};
 
 const Login = (props: Props) => {
@@ -54,28 +41,6 @@ const Login = (props: Props) => {
   const navigate = useNavigate();
   const [login] = useLoginMutation();
   const [attemptAccess] = useProtectedMutation();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ValidationSchema>({
-    resolver: zodResolver(validationSchema),
-  });
-
-  const onSubmit: SubmitHandler<ValidationSchema> = (data) => console.log(data);
-
-  const loginAsPharmaceutical = async (values: any) => {
-    try {
-      await login({
-        email: 'user',
-        password: 'pass',
-      });
-      navigate('/');
-      () => openNotification;
-    } catch (err) {
-      console.log('err', err);
-    }
-  };
 
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
@@ -98,7 +63,7 @@ const Login = (props: Props) => {
               initialValues={{
                 remember: true,
               }}
-              onFinish={loginAsPharmaceutical}
+              onFinish={onFinish}
             >
               <Form.Item
                 name="email"
