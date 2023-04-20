@@ -8,7 +8,7 @@ export const customerItems: MenuItem[] = [
 
   {
     label: 'Serviços Solicitados',
-    key: '/order',
+    key: '/request',
     icon: <ShoppingCartOutlined />,
   },
 ];

@@ -3,6 +3,7 @@ import React from 'react';
 import {MenuProps} from './types/MenuPropsType'
 import { Dropdown } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { logout } from '../../../redux/features/auth/authSlice';
 
 interface Props {
   items: MenuProps['items'];
@@ -13,6 +14,7 @@ const MenuDropdown: React.FC<Props> = ({ items, children }: Props) => {
   const navigate = useNavigate();
   const onClick: MenuProps['onClick'] = ({ key }) => {
     navigate(key);
+    logout()
   };
 
   return (
