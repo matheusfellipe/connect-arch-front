@@ -4,17 +4,16 @@ import React from 'react';
 import MenuDropdown from '../../../components/MenuDropdown';
 import { IconAvatar } from './style';
 
-import { items } from '../MenuItems/itens-menu';
+import { itemsProfileMenu } from '../MenuItems/itens-menu';
 
-
-const ProfileAvatar: React.FC= () => {
-
-  return(
+const ProfileAvatar: React.FC = () => {
+  return (
     <IconAvatar>
- <MenuDropdown items={items}>
-      <Avatar size="large" icon={<UserOutlined />} />
+      <MenuDropdown items={itemsProfileMenu}>
+        <Avatar size="large" icon={<UserOutlined />} />
       </MenuDropdown>
-  </IconAvatar>)
-}
+    </IconAvatar>
+  );
+};
 
 export default ProfileAvatar;

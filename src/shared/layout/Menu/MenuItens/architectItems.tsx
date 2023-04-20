@@ -3,7 +3,11 @@ import { DashboardOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
-export const admItems: MenuItem[] = [
+export const architectItems: MenuItem[] = [
   { label: 'Dashboard', key: '/', icon: <DashboardOutlined /> },
-  { label: 'Solicitações', key: '/order', icon: <ShoppingCartOutlined /> },
+  {
+    label: 'Solicitações',
+    key: '/request-services',
+    icon: <ShoppingCartOutlined />,
+  },
 ];

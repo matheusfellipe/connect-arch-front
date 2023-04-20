@@ -1,7 +1,7 @@
 import type { MenuProps } from 'antd';
 import { LogoutOutlined } from '@ant-design/icons';
 
-export const items: MenuProps['items'] = [
+export const itemsProfileMenu: MenuProps['items'] = [
   {
     key: '/login',
     label: ' Sair',

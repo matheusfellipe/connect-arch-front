@@ -3,7 +3,7 @@ import { DashboardOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
-export const pharmaceuticalsItems: MenuItem[] = [
+export const customerItems: MenuItem[] = [
   { label: 'Arquitetos', key: '/', icon: <DashboardOutlined /> },
 
   {

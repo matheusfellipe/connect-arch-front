@@ -3,8 +3,8 @@ import { Divider } from 'antd';
 import Props from './interface';
 import { MenuCustom, SiderCustom } from './style';
 
-import { pharmaceuticalsItems } from './MenuItens/customerItems';
-import { admItems } from './MenuItens/architectItems';
+import { customerItems } from './MenuItens/customerItems';
+import { architectItems } from './MenuItens/architectItems';
 import { selectCurrentUser } from '../../../redux/features/auth/authSlice';
 
 import { useNavigate } from 'react-router-dom';
@@ -34,7 +34,7 @@ const SideMenu = ({
         openKeys={openKeys}
         onOpenChange={onOpenChange}
         items={
-          user && roles.includes(user.role) ? pharmaceuticalsItems : admItems
+          user && roles.includes(user.role) ? customerItems : architectItems
         }
         onClick={({ key }) => {
           if (key) {
