@@ -6,16 +6,14 @@ import {
   ButtonCustom,
   FormCustom,
   ParagraphCustom,
-  PasswordForgot,
   TitleCustom,
 } from '../style';
 import { LogoCustom } from '../../../shared/assets/logo/style';
 import {
+  LoginRequest,
   useLoginMutation,
   useProtectedMutation,
 } from '../../../redux/features/auth/auth';
-import { selectIsAuthenticated } from '../../../redux/features/auth/authSlice';
-import { useSelector } from 'react-redux';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { NotificationPlacement } from 'antd/es/notification/interface';
@@ -35,13 +33,22 @@ const Login = () => {
     });
   };
 
-  const isAuthenticated = useSelector(selectIsAuthenticated);
   const navigate = useNavigate();
   const [login] = useLoginMutation();
   const [attemptAccess] = useProtectedMutation();
 
-  const onFinish = (values: any) => {
-    console.log('Received values of form: ', values);
+  const onFinish = async (values: any) => {
+    try {
+      const data = await login(values);
+
+      if (data) {
+        navigate('/'); // Redireciona para a página principal da aplicação
+      } else {
+        openNotification('topRight');
+      }
+    } catch (error) {
+      console.log('Error:', error);
+    }
   };
 
   return (

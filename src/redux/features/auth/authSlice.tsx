@@ -5,6 +5,7 @@ import type { RootState } from '../../store';
 type AuthState = {
   user: User | null;
   accessToken: string;
+  refreshToken: string;
   isAuthenticated: boolean;
 };
 
@@ -13,9 +14,15 @@ const slice = createSlice({
   initialState: {
     user: null,
     accessToken: '',
+    refreshToken: '',
     isAuthenticated: false,
   } as AuthState,
   reducers: {
+    setCredentials: (state, action) => {
+      const { user, accessToken } = action.payload;
+      state.user = user;
+      state.accessToken = accessToken;
+    },
     logout: (state) => {
       state.user = null;
       state.accessToken = '';
@@ -34,7 +41,7 @@ const slice = createSlice({
   },
 });
 
-export const { logout } = slice.actions;
+export const { logout, setCredentials } = slice.actions;
 
 export default slice.reducer;
 

@@ -1,5 +1,6 @@
 import { Form, Input, Space } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import InputMask from 'react-input-mask';
 
 import {
   BoxContainer,
@@ -11,10 +12,10 @@ import {
 import { LogoCustom } from '../../../shared/assets/logo/style';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { validatePhone } from '../../../shared/validators/validatePhone';
 
 const Register = () => {
   const [architect, setArchitect] = useState(false);
+
   const onFinish = (values: string) => {
     console.log('Received values of form: ', values);
   };
@@ -100,17 +101,16 @@ const Register = () => {
               <Form.Item
                 name="phone"
                 label="Telefone"
-                rules={[
-                  {
-                    required: true,
-                    message: 'Por favor digite o seu telefone',
-                  },
-                  {
-                    validator: validatePhone,
-                  },
-                ]}
+                style={{
+                  display: 'inline-block',
+                  marginBottom: '5px',
+                  marginRight: '15px',
+                  width: '49%',
+                }}
+                labelCol={{ span: 24 }}
+                rules={[{ required: true }]}
               >
-                <Input />
+                <InputMask mask="(99) 9999-9999" id="phone" name="phone" />
               </Form.Item>
               <Form.Item
                 name="password"
