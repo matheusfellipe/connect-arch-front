@@ -7,15 +7,14 @@ export const BoxContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin: 15vh;
+    margin: 10vh;
    
 `;
 
 export const FormCustom = styled(Form)`
 display: flex;
 flex-direction: column;
-margin-top: 50px;
-max-width: 300px;
+
 `;
 
 export const PasswordForgot = styled.a`

@@ -1,4 +1,4 @@
-import { Checkbox, Form, Input, Space } from 'antd';
+import { Form, Input, Space } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import {
@@ -10,8 +10,11 @@ import {
 } from '../style';
 import { LogoCustom } from '../../../shared/assets/logo/style';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { validatePhone } from '../../../shared/validators/validatePhone';
 
 const Register = () => {
+  const [architect, setArchitect] = useState(false);
   const onFinish = (values: string) => {
     console.log('Received values of form: ', values);
   };
@@ -21,7 +24,7 @@ const Register = () => {
       <BoxContainer>
         <BoxContainer>
           <div>
-            <TitleCustom level={3}>Seja bem vindo a TopFarm!</TitleCustom>
+            <TitleCustom level={3}>Seja bem vindo a Archi Connect!</TitleCustom>
             <Space direction="vertical" />
             <ParagraphCustom>
               Já possui cadastro ?{' '}
@@ -53,11 +56,11 @@ const Register = () => {
                 />
               </Form.Item>
               <Form.Item
-                name="username"
+                name="email"
                 rules={[
                   {
                     required: true,
-                    message: 'Por favor digite o seu sobrenome!',
+                    message: 'Por favor digite o seu email!',
                   },
                 ]}
               >
@@ -67,18 +70,47 @@ const Register = () => {
                 />
               </Form.Item>
               <Form.Item
-                name="cnpj"
+                name="gender"
                 rules={[
                   {
                     required: true,
-                    message: 'Por favor digite o seu e-mail!',
+                    message: 'Por favor digite o seu gênero',
                   },
                 ]}
               >
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
-                  placeholder="CNPJ"
+                  placeholder="Gênero"
                 />
+              </Form.Item>
+              <Form.Item
+                name="age"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Por favor digite a sua idade',
+                  },
+                ]}
+              >
+                <Input
+                  prefix={<UserOutlined className="site-form-item-icon" />}
+                  placeholder="Idade"
+                />
+              </Form.Item>
+              <Form.Item
+                name="phone"
+                label="Telefone"
+                rules={[
+                  {
+                    required: true,
+                    message: 'Por favor digite o seu telefone',
+                  },
+                  {
+                    validator: validatePhone,
+                  },
+                ]}
+              >
+                <Input />
               </Form.Item>
               <Form.Item
                 name="password"
