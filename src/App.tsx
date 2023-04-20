@@ -1,5 +1,5 @@
 import React from 'react';
-
+import 'antd/dist/reset.css';
 import { ConfigProvider } from 'antd';
 import AppRouter from './routes';
 import { primaryColor } from './shared/ui/var';

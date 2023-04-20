@@ -1,6 +1,6 @@
 import { LogoContainer, LogoCustom } from './style';
 
-const TopFarmLogo = () => {
+const ArchiConnectLogo = () => {
   return (
     <LogoContainer>
       <LogoCustom small />
@@ -8,4 +8,4 @@ const TopFarmLogo = () => {
   );
 };
 
-export default TopFarmLogo;
+export default ArchiConnectLogo;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as Logo } from '../images/topfarmlogo.svg';
+import { ReactComponent as Logo } from '../images/architectlogo.svg';
 
 export default interface Props {
   small?: boolean;

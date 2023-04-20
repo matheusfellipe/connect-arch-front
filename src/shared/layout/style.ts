@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { Layout as AntLayout } from 'antd';
-import { backgroundColor} from '../ui/var';
+import { backgroundColor } from '../ui/var';
 
 const { Content } = AntLayout;
 
 export const LayoutCustom = styled(AntLayout)`
     min-height: 100vh;
+    min-width:100%;
 `;
 
 export const ContentCustom = styled(Content)`

@@ -1,5 +1,5 @@
 import { Divider } from 'antd';
-import TopFarmLogo from '../../assets/logo/TopFarmLogo';
+
 import Props from './interface';
 import { MenuCustom, SiderCustom } from './style';
 
@@ -27,8 +27,6 @@ const SideMenu = ({
       onCollapse={(value) => setCollapsed(value)}
       width={240}
     >
-      <TopFarmLogo />
-
       <MenuCustom
         theme="dark"
         defaultSelectedKeys={['1']}
