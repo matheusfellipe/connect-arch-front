@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Login, Home, Register } from '../pages';
+import { Login, Home, Register, OrderPage } from '../pages';
 import MainLayout from '../shared/layout';
 import { PrivateRoute } from './PrivateRoute';
 import { ROLE } from '../redux/features/auth/auth';
@@ -24,12 +24,12 @@ export default function AppRouter() {
           /> */}
 
           {/* Rotas do painel do Cliente */}
-          {/* <Route
+          <Route
             path="sale"
             element={
-              <PrivateRoute roles={[ROLE.DROGARIA]} component={SalesPage} />
+              <PrivateRoute roles={[ROLE.CUSTOMER]} component={OrderPage} />
             }
-          /> */}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

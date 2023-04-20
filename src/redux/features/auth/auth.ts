@@ -7,8 +7,8 @@ import { RootState } from '../../store';
 import { logout, setCredentials } from './authSlice';
 
 export enum ROLE {
-  CUSTOMER = 'customer',
-  ARCHITECT = 'architect',
+  CUSTOMER = '14563bf5-a3fd-4381-ad6d-75f7c6a10273',
+  ARCHITECT = '45aa4f99-0008-4ea3-b917-34e69bc19c9a',
 }
 
 export interface User {
@@ -28,7 +28,7 @@ export interface LoginRequest {
 }
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:3001/',
+  baseUrl: 'http://localhost:3001/auth',
   prepareHeaders: (headers, { getState }) => {
     // By default, if we have a token in the store, let's use that for authenticated requests
     const token = (getState() as RootState).auth.accessToken;
@@ -46,7 +46,7 @@ const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
     console.log('sending refresh token');
     // send refresh token to get new access token
     const refreshResult = await baseQuery(
-      { url: '/refresh-token', method: 'PUT' },
+      { url: 'auth/refresh-token', method: 'PUT' },
       api,
       extraOptions,
     );

@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
-type Props = {};
-
 const ServiceRequestContainer = styled.div`
     display: flex;
     justify-content: center;
 `;
 
-const ServiceRequestPage = (props: Props) => {
+const ServiceRequestPage = () => {
   return (
     <ServiceRequestContainer>
       <h1>Service Request Page</h1>
