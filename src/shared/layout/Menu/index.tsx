@@ -1,0 +1,52 @@
+import { Divider } from 'antd';
+import TopFarmLogo from '../../assets/logo/TopFarmLogo';
+import Props from './interface';
+import { MenuCustom, SiderCustom } from './style';
+
+import { pharmaceuticalsItems } from './MenuItens/pharmaceuticalsItems';
+import { admItems } from './MenuItens/admItems';
+import { selectCurrentUser } from '../../../redux/features/auth/authSlice';
+
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+const SideMenu = ({
+  roles,
+  collapsed,
+  openKeys,
+  setCollapsed,
+  onOpenChange,
+}: Props) => {
+  const user = useSelector(selectCurrentUser);
+  const navigate = useNavigate();
+  console.log(user && roles.includes(user.role));
+  return (
+    <SiderCustom
+      collapsible
+      collapsed={collapsed}
+      onCollapse={(value) => setCollapsed(value)}
+      width={240}
+    >
+      <TopFarmLogo />
+
+      <MenuCustom
+        theme="dark"
+        defaultSelectedKeys={['1']}
+        mode="inline"
+        openKeys={openKeys}
+        onOpenChange={onOpenChange}
+        items={
+          user && roles.includes(user.role) ? pharmaceuticalsItems : admItems
+        }
+        onClick={({ key }) => {
+          if (key) {
+            navigate(key);
+          }
+        }}
+      />
+      <Divider />
+    </SiderCustom>
+  );
+};
+
+export default SideMenu;
