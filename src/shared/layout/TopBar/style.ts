@@ -1,6 +1,6 @@
-import { Header } from "antd/es/layout/layout";
-import { secondaryColor } from "../../ui/var";
-import styled from "styled-components";
+import { Header } from 'antd/es/layout/layout';
+import { secondaryColor } from '../../ui/var';
+import styled from 'styled-components';
 
 export const HeaderCustom = styled(Header)`
     display: flex;

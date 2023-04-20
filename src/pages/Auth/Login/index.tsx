@@ -21,9 +21,7 @@ import { useNavigate } from 'react-router-dom';
 import { NotificationPlacement } from 'antd/es/notification/interface';
 import { createContext } from 'react';
 
-type Props = {};
-
-const Login = (props: Props) => {
+const Login = () => {
   const [api, contextHolder] = notification.useNotification();
   const Context = createContext({ name: 'Default' });
 

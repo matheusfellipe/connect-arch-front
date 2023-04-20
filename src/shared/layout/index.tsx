@@ -1,5 +1,4 @@
 import { Layout, MenuProps } from 'antd';
-import React from 'react';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import SideMenu from './Menu';
@@ -33,7 +32,7 @@ const MainLayout: React.FC = () => {
           setCollapsed={setCollapsed}
           onOpenChange={onOpenChange}
           openKeys={openKeys}
-          roles={[ROLE.DROGARIA]}
+          roles={[ROLE.CUSTOMER]}
         />
         <Layout>
           <TopBar collapsed={collapsed} setCollapsed={setCollapsed} />

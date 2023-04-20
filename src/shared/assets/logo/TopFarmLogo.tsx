@@ -1,13 +1,11 @@
-import { LogoContainer, LogoCustom } from './style'
+import { LogoContainer, LogoCustom } from './style';
 
-type Props = {}
-
-const TopFarmLogo = (props: Props) => {
+const TopFarmLogo = () => {
   return (
     <LogoContainer>
-    <LogoCustom small/>
+      <LogoCustom small />
     </LogoContainer>
-  )
-}
+  );
+};
 
-export default TopFarmLogo
+export default TopFarmLogo;

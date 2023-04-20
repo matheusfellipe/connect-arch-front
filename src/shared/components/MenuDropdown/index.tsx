@@ -1,32 +1,32 @@
+
 import React from 'react';
-import type { MenuProps } from 'antd';
+import {MenuProps} from './types/MenuPropsType'
 import { Dropdown } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
-
-interface Props{
-  items: MenuProps['items']
- children:JSX.Element
+interface Props {
+  items: MenuProps['items'];
+  children: JSX.Element;
 }
 
-
-
-
-
-const MenuDropdown: React.FC<Props> = ({items,children}:Props) => {
-  const navigate = useNavigate()
+const MenuDropdown: React.FC<Props> = ({ items, children }: Props) => {
+  const navigate = useNavigate();
   const onClick: MenuProps['onClick'] = ({ key }) => {
-  navigate(key)
+    navigate(key);
   };
-  
-  return(
-  <>
-    <Dropdown menu={{ items,onClick }} placement="bottomLeft" arrow trigger={['click']}>
-      <a onClick={(e)=>e.preventDefault()}>
-      {children}
-      </a>
-    </Dropdown>
-  </>
-);}
+
+  return (
+    <>
+      <Dropdown
+        menu={{ items, onClick }}
+        placement="bottomLeft"
+        arrow
+        trigger={['click']}
+      >
+        <a onClick={(e) => e.preventDefault()}>{children}</a>
+      </Dropdown>
+    </>
+  );
+};
 
 export default MenuDropdown;

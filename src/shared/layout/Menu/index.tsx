@@ -3,8 +3,8 @@ import TopFarmLogo from '../../assets/logo/TopFarmLogo';
 import Props from './interface';
 import { MenuCustom, SiderCustom } from './style';
 
-import { pharmaceuticalsItems } from './MenuItens/pharmaceuticalsItems';
-import { admItems } from './MenuItens/admItems';
+import { pharmaceuticalsItems } from './MenuItens/customerItems';
+import { admItems } from './MenuItens/architectItems';
 import { selectCurrentUser } from '../../../redux/features/auth/authSlice';
 
 import { useNavigate } from 'react-router-dom';

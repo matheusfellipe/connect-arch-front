@@ -2,8 +2,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../../store';
 
 export enum ROLE {
-  ADMIN = 'admin',
-  DROGARIA = 'drogaria',
+  CUSTOMER = 'customer',
+  ARCHITECT = 'architect',
 }
 
 export interface User {

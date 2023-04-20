@@ -8,14 +8,14 @@ export default function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        {/*Rotas abertas */}
+        {/* Rotas abertas */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
 
-          {/*Rotas do painel do Admin */}
+          {/* Rotas do painel do Arquiteto */}
           {/* <Route
             path="drugstore"
             element={
@@ -23,7 +23,7 @@ export default function AppRouter() {
             }
           /> */}
 
-          {/*Rotas do painel da Drogaria */}
+          {/* Rotas do painel do Cliente */}
           {/* <Route
             path="sale"
             element={

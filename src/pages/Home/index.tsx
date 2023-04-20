@@ -1,9 +1,7 @@
-type Props = {}
 
-const Home = (props: Props) => {
-  return (
-    <header>Home</header>
-  )
-}
 
-export default Home
+const Home = () => {
+  return <header>Home</header>;
+};
+
+export default Home;
