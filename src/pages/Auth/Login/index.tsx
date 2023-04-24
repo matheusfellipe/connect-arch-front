@@ -9,15 +9,10 @@ import {
   TitleCustom,
 } from '../style';
 import { LogoCustom } from '../../../shared/assets/logo/style';
-import {
-  LoginRequest,
-  useLoginMutation,
-  useProtectedMutation,
-} from '../../../redux/features/auth/auth';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { NotificationPlacement } from 'antd/es/notification/interface';
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 
 const Login = () => {
   const [api, contextHolder] = notification.useNotification();
@@ -35,6 +30,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const [login] = useLoginMutation();
+
   const [attemptAccess] = useProtectedMutation();
 
   const onFinish = async (values: any) => {
@@ -60,7 +56,7 @@ const Login = () => {
             <Space direction="vertical" />
             <ParagraphCustom>
               Ainda não é um cliente ?{' '}
-              <Link to="/register" replace>
+              <Link to="/register" replace state={{ isArchitect: false }}>
                 Registrar agora!
               </Link>
             </ParagraphCustom>
@@ -124,7 +120,7 @@ const Login = () => {
           <LogoCustom />
           <ParagraphCustom>
             Quer ser um parceiro arquiteto ?{' '}
-            <Link to="/register-architect" replace>
+            <Link to="/register" state={{ isArchitect: true }} replace>
               Oferecer meus serviços!
             </Link>
           </ParagraphCustom>

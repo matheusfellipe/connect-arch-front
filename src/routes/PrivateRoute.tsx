@@ -2,7 +2,7 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-import { ROLE } from '../redux/features/auth/auth';
+import { ROLE } from '../redux/app/services/auth';
 import {
   selectCurrentUser,
   selectIsAuthenticated,

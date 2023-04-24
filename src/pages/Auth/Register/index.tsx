@@ -10,14 +10,23 @@ import {
   TitleCustom,
 } from '../style';
 import { LogoCustom } from '../../../shared/assets/logo/style';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Register = () => {
-  const [architect, setArchitect] = useState(false);
+  const { state } = useLocation();
 
-  const onFinish = (values: string) => {
-    console.log('Received values of form: ', values);
+  const onFinish = (values: any) => {
+    try {
+      const data = await login(values);
+
+      if (data) {
+        navigate('/'); // Redireciona para a página principal da aplicação
+      } else {
+        openNotification('topRight');
+      }
+    } catch (error) {
+      console.log('Error:', error);
+    }
   };
 
   return (
@@ -40,7 +49,7 @@ const Register = () => {
               initialValues={{
                 remember: true,
               }}
-              onFinish={() => onFinish}
+              onFinish={onFinish}
             >
               <Form.Item
                 name="name"
@@ -100,18 +109,58 @@ const Register = () => {
               </Form.Item>
               <Form.Item
                 name="phone"
-                label="Telefone"
-                style={{
-                  display: 'inline-block',
-                  marginBottom: '5px',
-                  marginRight: '15px',
-                  width: '49%',
-                }}
-                labelCol={{ span: 24 }}
-                rules={[{ required: true }]}
+                rules={[
+                  { required: true, message: 'Por favor digite seu telefone' },
+                ]}
               >
-                <InputMask mask="(99) 9999-9999" id="phone" name="phone" />
+                <InputMask
+                  mask="(99) 99999-9999"
+                  id="phone"
+                  name="phone"
+                  placeholder="Telefone"
+                  style={{
+                    height: '35px',
+                    width: '100%',
+                    borderRadius: '7px',
+                    border: '1px solid #d9d9d9',
+                    padding: '0 11px',
+                  }}
+                />
               </Form.Item>
+              {state && state.isArchitect ? (
+                <>
+                  <Form.Item
+                    name="registry"
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Por favor digite o seu registro CAU',
+                      },
+                    ]}
+                  >
+                    <Input
+                      prefix={<UserOutlined className="site-form-item-icon" />}
+                      placeholder="Registro CAU"
+                    />
+                  </Form.Item>
+                  <Form.Item
+                    name="specialty"
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Por favor digite a sua especialidade',
+                      },
+                    ]}
+                  >
+                    <Input
+                      prefix={<UserOutlined className="site-form-item-icon" />}
+                      placeholder="Especialidade"
+                    />
+                  </Form.Item>
+                </>
+              ) : (
+                ''
+              )}
               <Form.Item
                 name="password"
                 rules={[

@@ -6,7 +6,7 @@ import SideMenu from './Menu';
 import { ContentCustom, LayoutCustom } from './style';
 
 import TopBar from './TopBar';
-import { ROLE } from '../../redux/features/auth/auth';
+import { ROLE } from '../../redux/app/services/auth';
 
 const rootSubmenuKeys = ['sub1', 'sub2', 'sub3'];
 
