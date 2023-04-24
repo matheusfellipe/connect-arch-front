@@ -46,7 +46,7 @@ const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
     console.log('sending refresh token');
     // send refresh token to get new access token
     const refreshResult = await baseQuery(
-      { url: 'auth/refresh-token', method: 'PUT' },
+      { url: 'refresh-token', method: 'PUT' },
       api,
       extraOptions,
     );

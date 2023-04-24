@@ -13,7 +13,15 @@ export default function AppRouter() {
         <Route path="/register" element={<Register />} />
 
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<Home />} />
+          <Route
+            index
+            element={
+              <PrivateRoute
+                roles={[ROLE.ARCHITECT, ROLE.CUSTOMER]}
+                component={Home}
+              />
+            }
+          />
 
           {/* Rotas do painel do Arquiteto */}
           <Route

@@ -59,7 +59,7 @@ const Login = () => {
             <TitleCustom level={3}>Solicite um Arquiteto</TitleCustom>
             <Space direction="vertical" />
             <ParagraphCustom>
-              Quer ser um cliente ou um parceiro ?{' '}
+              Ainda não é um cliente ?{' '}
               <Link to="/register" replace>
                 Registrar agora!
               </Link>
@@ -120,7 +120,15 @@ const Login = () => {
             </FormCustom>
           </div>
         </BoxContainer>
-        <LogoCustom />
+        <BoxContainer style={{ display: 'flex', flexDirection: 'column' }}>
+          <LogoCustom />
+          <ParagraphCustom>
+            Quer ser um parceiro arquiteto ?{' '}
+            <Link to="/register-architect" replace>
+              Oferecer meus serviços!
+            </Link>
+          </ParagraphCustom>
+        </BoxContainer>
       </BoxContainer>
     </>
   );

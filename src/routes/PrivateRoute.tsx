@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
@@ -25,16 +26,14 @@ export const PrivateRoute: React.FC<Props> = ({
   console.log(isAuthenticated);
 
   if (isAuthenticated && userHasRequiredRole) {
-    console.log('entrou aqui, é autenticado e tem o role');
     console.log(user);
     console.log(isAuthenticated);
     return <RouteComponent />;
   }
 
   if (isAuthenticated && !userHasRequiredRole) {
-    console.log('entrou aqui, é autenticado mas n tem o role');
     return <Navigate to="/login" />;
   }
 
-  return <Navigate to="/" />;
+  return <Navigate to="/login" />;
 };
