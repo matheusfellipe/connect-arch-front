@@ -2,17 +2,21 @@ import { Checkbox, Form, Input, Space, notification } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import {
-  BoxContainer,
+  LoginContainer,
   ButtonCustom,
   FormCustom,
   ParagraphCustom,
   TitleCustom,
-} from '../style';
+} from './style';
 import { LogoCustom } from '../../../shared/assets/logo/style';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { NotificationPlacement } from 'antd/es/notification/interface';
 import { createContext, useState } from 'react';
+import {
+  ROLE,
+  useLoginMutation,
+} from '../../../redux/app/services/auth/authApiSlice';
 
 const Login = () => {
   const [api, contextHolder] = notification.useNotification();
@@ -31,7 +35,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [login] = useLoginMutation();
 
-  const [attemptAccess] = useProtectedMutation();
+  // const [attemptAccess] = useProtectedMutation();
 
   const onFinish = async (values: any) => {
     try {
@@ -39,7 +43,6 @@ const Login = () => {
 
       if (data) {
         navigate('/'); // Redireciona para a página principal da aplicação
-      } else {
         openNotification('topRight');
       }
     } catch (error) {
@@ -49,14 +52,18 @@ const Login = () => {
 
   return (
     <>
-      <BoxContainer>
-        <BoxContainer>
+      <LoginContainer>
+        <LoginContainer>
           <div>
             <TitleCustom level={3}>Solicite um Arquiteto</TitleCustom>
             <Space direction="vertical" />
             <ParagraphCustom>
               Ainda não é um cliente ?{' '}
-              <Link to="/register" replace state={{ isArchitect: false }}>
+              <Link
+                to="/register"
+                replace
+                state={{ isArchitect: false, roleId: ROLE.CUSTOMER }}
+              >
                 Registrar agora!
               </Link>
             </ParagraphCustom>
@@ -115,17 +122,21 @@ const Login = () => {
               </Form.Item>
             </FormCustom>
           </div>
-        </BoxContainer>
-        <BoxContainer style={{ display: 'flex', flexDirection: 'column' }}>
+        </LoginContainer>
+        <LoginContainer style={{ display: 'flex', flexDirection: 'column' }}>
           <LogoCustom />
           <ParagraphCustom>
             Quer ser um parceiro arquiteto ?{' '}
-            <Link to="/register" state={{ isArchitect: true }} replace>
+            <Link
+              to="/register"
+              state={{ isArchitect: true, roleId: ROLE.ARCHITECT }}
+              replace
+            >
               Oferecer meus serviços!
             </Link>
           </ParagraphCustom>
-        </BoxContainer>
-      </BoxContainer>
+        </LoginContainer>
+      </LoginContainer>
     </>
   );
 };

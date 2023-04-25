@@ -1,4 +1,4 @@
-import { ROLE } from '../../../../redux/app/services/auth';
+import { ROLE } from '../../../../redux/app/services/auth/authApiSlice';
 
 export default interface Props {
   roles: Array<ROLE>;

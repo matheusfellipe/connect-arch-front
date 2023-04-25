@@ -1,5 +1,5 @@
-import { api } from './api';
-import { logout, setCredentials } from '../../features/auth/authSlice';
+import { api } from '../api';
+import { logout, setCredentials } from '../../../features/auth/authSlice';
 
 export enum ROLE {
   CUSTOMER = '14563bf5-a3fd-4381-ad6d-75f7c6a10273',
@@ -68,8 +68,5 @@ export const authApi = api.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation } = authApi;
-
-export const {
-  endpoints: { login },
-} = authApi;
+export const { useLoginMutation, useRefreshMutation, useSendLogoutMutation } =
+  authApi;

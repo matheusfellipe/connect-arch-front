@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Login, Home, Register, OrderPage, ServiceRequestPage } from '../pages';
 import MainLayout from '../shared/layout';
 import { PrivateRoute } from './PrivateRoute';
-import { ROLE } from '../redux/app/services/auth';
+import { ROLE } from '../redux/app/services/auth/authApiSlice';
 
 export default function AppRouter() {
   return (

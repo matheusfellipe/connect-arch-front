@@ -1,13 +1,14 @@
 import {
-  FetchBaseQueryError,
   createApi,
   fetchBaseQuery,
-} from '@reduxjs/toolkit/dist/query';
+  FetchBaseQueryError,
+} from '@reduxjs/toolkit/query/react';
+
 import { RootState } from '../store';
 import { setCredentials } from '../../features/auth/authSlice';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:3001/auth',
+  baseUrl: 'http://localhost:3001',
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     // By default, if we have a token in the store, let's use that for authenticated requests
@@ -55,12 +56,6 @@ export const baseQueryWithReauth = async (
 };
 
 export const api = createApi({
-  reducerPath: 'api',
   baseQuery: baseQueryWithReauth,
-  tagTypes: ['User', 'Auth'],
-  endpoints: () => ({}),
-});
-
-export const enhancedApi = api.enhanceEndpoints({
   endpoints: () => ({}),
 });

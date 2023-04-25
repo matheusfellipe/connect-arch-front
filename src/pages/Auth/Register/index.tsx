@@ -3,26 +3,29 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import InputMask from 'react-input-mask';
 
 import {
-  BoxContainer,
+  RegisterContainer,
   ButtonCustom,
   FormCustom,
   ParagraphCustom,
   TitleCustom,
-} from '../style';
+} from './style';
 import { LogoCustom } from '../../../shared/assets/logo/style';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAddNewUserMutation } from '../../../redux/app/services/users/userApiSlice';
 
 const Register = () => {
   const { state } = useLocation();
+  const navigate = useNavigate();
+  const [register] = useAddNewUserMutation();
 
-  const onFinish = (values: any) => {
+  const onFinish = async (values: any) => {
+    const input = { roleId: state.roleId, ...values };
+
     try {
-      const data = await login(values);
+      const data = await register(input);
 
       if (data) {
-        navigate('/'); // Redireciona para a página principal da aplicação
-      } else {
-        openNotification('topRight');
+        navigate('/login');
       }
     } catch (error) {
       console.log('Error:', error);
@@ -31,8 +34,8 @@ const Register = () => {
 
   return (
     <>
-      <BoxContainer>
-        <BoxContainer>
+      <RegisterContainer>
+        <RegisterContainer>
           <div>
             <TitleCustom level={3}>Seja bem vindo a Archi Connect!</TitleCustom>
             <Space direction="vertical" />
@@ -188,9 +191,9 @@ const Register = () => {
               </Form.Item>
             </FormCustom>
           </div>
-        </BoxContainer>
+        </RegisterContainer>
         <LogoCustom />
-      </BoxContainer>
+      </RegisterContainer>
     </>
   );
 };
