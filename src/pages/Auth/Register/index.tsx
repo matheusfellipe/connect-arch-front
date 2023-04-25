@@ -2,16 +2,16 @@ import { Form, Input, Space } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import InputMask from 'react-input-mask';
 
-import {
-  RegisterContainer,
-  ButtonCustom,
-  FormCustom,
-  ParagraphCustom,
-  TitleCustom,
-} from './style';
+import { RegisterContainer } from './style';
 import { LogoCustom } from '../../../shared/assets/logo/style';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAddNewUserMutation } from '../../../redux/app/services/users/userApiSlice';
+import {
+  FormCustom,
+  ParagraphCustom,
+  ButtonCustom,
+  TitleCustom,
+} from '../style';
 
 const Register = () => {
   const { state } = useLocation();

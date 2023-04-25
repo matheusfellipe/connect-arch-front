@@ -1,13 +1,7 @@
 import { Checkbox, Form, Input, Space, notification } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
-import {
-  LoginContainer,
-  ButtonCustom,
-  FormCustom,
-  ParagraphCustom,
-  TitleCustom,
-} from './style';
+import { LoginContainer } from './style';
 import { LogoCustom } from '../../../shared/assets/logo/style';
 
 import { Link, useNavigate } from 'react-router-dom';
@@ -17,6 +11,12 @@ import {
   ROLE,
   useLoginMutation,
 } from '../../../redux/app/services/auth/authApiSlice';
+import {
+  ButtonCustom,
+  FormCustom,
+  ParagraphCustom,
+  TitleCustom,
+} from '../style';
 
 const Login = () => {
   const [api, contextHolder] = notification.useNotification();
