@@ -25,7 +25,7 @@ export default function AppRouter() {
 
           {/* Rotas do painel do Arquiteto */}
           <Route
-            path="request-service"
+            path="request-services"
             element={
               <PrivateRoute
                 roles={[ROLE.ARCHITECT]}
