@@ -19,7 +19,7 @@ const SideMenu = ({
 }: Props) => {
   const user = useSelector(selectCurrentUser);
   const navigate = useNavigate();
-  console.log(user && roles.includes(user.role));
+
   return (
     <SiderCustom
       collapsible

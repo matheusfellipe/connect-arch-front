@@ -1,4 +1,4 @@
-import { Form, Input, Space } from 'antd';
+import { Form, Input, InputNumber, Space } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import InputMask from 'react-input-mask';
 
@@ -105,9 +105,17 @@ const Register = () => {
                   },
                 ]}
               >
-                <Input
-                  prefix={<UserOutlined className="site-form-item-icon" />}
+                <InputNumber
+                  id="age"
+                  name="age"
                   placeholder="Idade"
+                  style={{
+                    height: '35px',
+                    width: '100%',
+                    borderRadius: '7px',
+                    border: '1px solid #d9d9d9',
+                    padding: '0 11px',
+                  }}
                 />
               </Form.Item>
               <Form.Item

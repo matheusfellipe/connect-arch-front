@@ -3,7 +3,7 @@ import { User, authApi } from '../../app/services/auth/authApiSlice';
 import type { RootState } from '../../app/store';
 
 type AuthState = {
-  user: User | null;
+  payload: User | null;
   accessToken: string;
   refreshToken: string;
   isAuthenticated: boolean;
@@ -12,19 +12,19 @@ type AuthState = {
 const slice = createSlice({
   name: 'auth',
   initialState: {
-    user: null,
+    payload: null,
     accessToken: '',
     refreshToken: '',
     isAuthenticated: false,
   } as AuthState,
   reducers: {
     setCredentials: (state, action) => {
-      const { user, accessToken } = action.payload;
-      state.user = user;
+      const { payload, accessToken } = action.payload;
+      state.payload = payload;
       state.accessToken = accessToken;
     },
     logout: (state) => {
-      state.user = null;
+      state.payload = null;
       state.accessToken = '';
       state.isAuthenticated = false;
     },
@@ -32,9 +32,11 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder.addMatcher(
       authApi.endpoints.login.matchFulfilled,
-      (state, { payload: { user, accessToken } }) => {
-        state.user = user;
+      (state, { payload: { payload, accessToken, refreshToken } }) => {
+        console.log(payload);
+        state.payload = payload;
         state.accessToken = accessToken;
+        state.refreshToken = refreshToken;
         state.isAuthenticated = true;
       },
     );
@@ -45,6 +47,6 @@ export const { logout, setCredentials } = slice.actions;
 
 export default slice.reducer;
 
-export const selectCurrentUser = (state: RootState) => state.auth.user;
+export const selectCurrentUser = (state: RootState) => state.auth.payload;
 export const selectIsAuthenticated = (state: RootState) =>
   state.auth.isAuthenticated;

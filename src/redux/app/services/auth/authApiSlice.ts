@@ -12,7 +12,7 @@ export interface User {
 }
 
 export interface UserResponse {
-  user: User;
+  payload: User;
   accessToken: string;
   refreshToken: string;
 }
