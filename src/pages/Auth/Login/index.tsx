@@ -17,11 +17,13 @@ import {
   TitleCustom,
 } from '../style';
 import { openNotificationWithIcon } from '../../../shared/components/Notification/NotificationComponent';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from '../../../redux/features/auth/authSlice';
 
 const Login = () => {
   const navigate = useNavigate();
   const [login] = useLoginMutation();
-
+  const user = useSelector(selectCurrentUser);
   // const [attemptAccess] = useProtectedMutation();
 
   const onFinish = async (values: any) => {
@@ -35,12 +37,14 @@ const Login = () => {
             type: 'success',
             description: 'Login Realizado com Sucesso',
             message: 'Você está logado no sistema',
-            duration: 3,
+            duration: 2,
             placement: 'topRight',
           },
           api,
         );
-        data ? navigate('/request-services') : navigate('/'); // Redireciona para a página principal da aplicação
+        user && user.role == ROLE.CUSTOMER
+          ? navigate('/')
+          : navigate('/request-services');
       }
     } catch (error) {
       openNotificationWithIcon(
@@ -48,7 +52,7 @@ const Login = () => {
           type: 'error',
           description: 'Algo deu Errado!',
           message: error as string,
-          duration: 3,
+          duration: 2,
           placement: 'topRight',
         },
         api,

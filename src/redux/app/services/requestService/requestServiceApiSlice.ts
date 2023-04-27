@@ -2,11 +2,16 @@ import { api } from '../api';
 
 type ServiceStatus = 'requested' | 'accepted' | 'refused';
 
+export interface Customer {
+  name: string;
+}
+
 export interface OrderService {
   id: string;
   description: string;
   architectId: string;
   customerId: string;
+  customer: Customer;
   isDeleted: boolean;
   status: ServiceStatus;
 }

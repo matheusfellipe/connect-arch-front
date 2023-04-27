@@ -5,7 +5,7 @@ import { useGetAllRequestServiceQuery } from '../../../redux/app/services/reques
 const columns = [
   {
     title: 'Cliente',
-    dataIndex: 'customer',
+    dataIndex: 'customerName',
     key: 'customer',
   },
   {
@@ -23,10 +23,17 @@ const columns = [
 
 const ServiceRequestPage = () => {
   const { data } = useGetAllRequestServiceQuery();
-  console.log(data);
+  const tableRow = data?.map((serviceRequest) => {
+    return {
+      customerName: serviceRequest.customer.name,
+      description: serviceRequest.description,
+      status: serviceRequest.status,
+    };
+  });
+
   return (
     <ServiceRequestContainer>
-      <TableComponent columns={columns} data={undefined} />
+      <TableComponent columns={columns} data={tableRow} />
     </ServiceRequestContainer>
   );
 };
