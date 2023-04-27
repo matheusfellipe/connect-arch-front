@@ -1,5 +1,18 @@
 import { api } from '../api';
 
+type ServiceStatus = 'requested' | 'accepted' | 'refused';
+
+export interface OrderService {
+  id: string;
+  description: string;
+  architectId: string;
+  customerId: string;
+  isDeleted: boolean;
+  status: ServiceStatus;
+}
+
+type OrderServiceResponse = OrderService[];
+
 export const requestServiceApi = api.injectEndpoints({
   endpoints: (builder) => ({
     addNewRequestService: builder.mutation({
@@ -11,7 +24,43 @@ export const requestServiceApi = api.injectEndpoints({
         },
       }),
     }),
+    getAllRequestService: builder.query<OrderServiceResponse, void>({
+      query: () => ({ url: 'service-requests' }),
+    }),
+    getByStatusRequestService: builder.query<OrderServiceResponse, void>({
+      query: (status) => `service-requests/${status}`,
+    }),
+    updateRequestService: builder.mutation<OrderService, Partial<OrderService>>(
+      {
+        query(data) {
+          const { id, ...body } = data;
+          return {
+            url: `service-request/${id}`,
+            method: 'PUT',
+            body,
+          };
+        },
+      },
+    ),
+    deleteRequestService: builder.mutation<OrderService, Partial<OrderService>>(
+      {
+        query(data) {
+          const { id, ...body } = data;
+          return {
+            url: `service-request/${id}`,
+            method: 'PUT',
+            body,
+          };
+        },
+      },
+    ),
   }),
 });
 
-export const { useAddNewRequestServiceMutation } = requestServiceApi;
+export const {
+  useAddNewRequestServiceMutation,
+  useGetAllRequestServiceQuery,
+  useGetByStatusRequestServiceQuery,
+  useUpdateRequestServiceMutation,
+  useDeleteRequestServiceMutation,
+} = requestServiceApi;

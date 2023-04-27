@@ -22,12 +22,7 @@ export const PrivateRoute: React.FC<Props> = ({
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const userHasRequiredRole = user && roles.includes(user.role) ? true : false;
 
-  console.log(user);
-  console.log(isAuthenticated);
-
   if (isAuthenticated && userHasRequiredRole) {
-    console.log(user);
-    console.log(isAuthenticated);
     return <RouteComponent />;
   }
 

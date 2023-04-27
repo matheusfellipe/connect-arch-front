@@ -1,5 +1,6 @@
 import { ServiceRequestContainer } from './style';
 import TableComponent from '../../../shared/components/Table';
+import { useGetAllRequestServiceQuery } from '../../../redux/app/services/requestService/requestServiceApiSlice';
 
 const columns = [
   {
@@ -21,6 +22,8 @@ const columns = [
 ];
 
 const ServiceRequestPage = () => {
+  const { data } = useGetAllRequestServiceQuery();
+  console.log(data);
   return (
     <ServiceRequestContainer>
       <TableComponent columns={columns} data={undefined} />

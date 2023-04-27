@@ -1,4 +1,4 @@
-import { Form, Input, InputNumber, Space } from 'antd';
+import { Form, Input, InputNumber, Space, notification } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import InputMask from 'react-input-mask';
@@ -12,6 +12,7 @@ import {
   ButtonCustom,
   TitleCustom,
 } from '../style';
+import { openNotificationWithIcon } from '../../../shared/components/Notification/NotificationComponent';
 
 const Register = () => {
   const { state } = useLocation();
@@ -20,15 +21,34 @@ const Register = () => {
 
   const onFinish = async (values: any) => {
     const input = { roleId: state.roleId, ...values };
-
+    const api = notification;
     try {
       const data = await register(input);
 
       if (data) {
+        openNotificationWithIcon(
+          {
+            type: 'success',
+            description: 'Cadastro Realizado com Sucesso',
+            message: 'Você já pode fazer login no sistema',
+            duration: 3,
+            placement: 'topRight',
+          },
+          api,
+        );
         navigate('/login');
       }
     } catch (error) {
-      console.log('Error:', error);
+      openNotificationWithIcon(
+        {
+          type: 'error',
+          description: 'Algo deu Errado!',
+          message: error as string,
+          duration: 3,
+          placement: 'topRight',
+        },
+        api,
+      );
     }
   };
 

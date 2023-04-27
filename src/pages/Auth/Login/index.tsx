@@ -5,8 +5,7 @@ import { LoginContainer } from './style';
 import { LogoCustom } from '../../../shared/assets/logo/style';
 
 import { Link, useNavigate } from 'react-router-dom';
-import { NotificationPlacement } from 'antd/es/notification/interface';
-import { createContext, useState } from 'react';
+
 import {
   ROLE,
   useLoginMutation,
@@ -17,36 +16,43 @@ import {
   ParagraphCustom,
   TitleCustom,
 } from '../style';
+import { openNotificationWithIcon } from '../../../shared/components/Notification/NotificationComponent';
 
 const Login = () => {
-  const [api, contextHolder] = notification.useNotification();
-  const Context = createContext({ name: 'Default' });
-
-  const openNotification = (placement: NotificationPlacement) => {
-    api.info({
-      message: `Notification ${placement}`,
-      description: (
-        <Context.Consumer>{({ name }) => `Hello, ${name}!`}</Context.Consumer>
-      ),
-      placement,
-    });
-  };
-
   const navigate = useNavigate();
   const [login] = useLoginMutation();
 
   // const [attemptAccess] = useProtectedMutation();
 
   const onFinish = async (values: any) => {
+    const api = notification;
     try {
       const data = await login(values);
 
       if (data) {
-        navigate('/'); // Redireciona para a página principal da aplicação
-        openNotification('topRight');
+        openNotificationWithIcon(
+          {
+            type: 'success',
+            description: 'Login Realizado com Sucesso',
+            message: 'Você está logado no sistema',
+            duration: 3,
+            placement: 'topRight',
+          },
+          api,
+        );
+        data ? navigate('/request-services') : navigate('/'); // Redireciona para a página principal da aplicação
       }
     } catch (error) {
-      console.log('Error:', error);
+      openNotificationWithIcon(
+        {
+          type: 'error',
+          description: 'Algo deu Errado!',
+          message: error as string,
+          duration: 3,
+          placement: 'topRight',
+        },
+        api,
+      );
     }
   };
 

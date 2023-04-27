@@ -33,7 +33,6 @@ const slice = createSlice({
     builder.addMatcher(
       authApi.endpoints.login.matchFulfilled,
       (state, { payload: { payload, accessToken, refreshToken } }) => {
-        console.log(payload);
         state.payload = payload;
         state.accessToken = accessToken;
         state.refreshToken = refreshToken;
