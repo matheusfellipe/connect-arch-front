@@ -1,14 +1,29 @@
-import styled from 'styled-components';
+import { ServiceRequestContainer } from './style';
+import TableComponent from '../../../shared/components/Table';
 
-const ServiceRequestContainer = styled.div`
-    display: flex;
-    justify-content: center;
-`;
+const columns = [
+  {
+    title: 'Cliente',
+    dataIndex: 'customer',
+    key: 'customer',
+  },
+  {
+    title: 'Descrição',
+    dataIndex: 'description',
+    key: 'description',
+  },
+
+  {
+    title: 'Status',
+    dataIndex: 'status',
+    key: 'status',
+  },
+];
 
 const ServiceRequestPage = () => {
   return (
     <ServiceRequestContainer>
-      <h1>Service Request Page</h1>
+      <TableComponent columns={columns} data={undefined} />
     </ServiceRequestContainer>
   );
 };

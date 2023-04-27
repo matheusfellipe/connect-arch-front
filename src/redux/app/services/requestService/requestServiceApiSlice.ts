@@ -1,10 +1,10 @@
 import { api } from '../api';
 
-export const userApi = api.injectEndpoints({
+export const requestServiceApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    addNewUser: builder.mutation({
+    addNewRequestService: builder.mutation({
       query: (initialUserData) => ({
-        url: '/users',
+        url: '/service-request',
         method: 'POST',
         body: {
           ...initialUserData,
@@ -14,4 +14,4 @@ export const userApi = api.injectEndpoints({
   }),
 });
 
-export const { useAddNewUserMutation } = userApi;
+export const { useAddNewRequestServiceMutation } = requestServiceApi;

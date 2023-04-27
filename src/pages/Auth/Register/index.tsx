@@ -1,7 +1,7 @@
 import { Form, Input, InputNumber, Space } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import InputMask from 'react-input-mask';
 
+import InputMask from 'react-input-mask';
 import { RegisterContainer } from './style';
 import { LogoCustom } from '../../../shared/assets/logo/style';
 import { Link, useLocation, useNavigate } from 'react-router-dom';

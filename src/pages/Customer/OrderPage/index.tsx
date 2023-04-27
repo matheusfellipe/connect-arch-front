@@ -1,16 +1,31 @@
-import styled from 'styled-components';
+import { OrderServiceContainer } from './style';
+import TableComponent from '../../../shared/components/Table';
 
-const OrderContainer = styled.div`
-    display: flex;
-    justify-content: center;
-`;
+const columns = [
+  {
+    title: 'Arquiteto',
+    dataIndex: 'architec',
+    key: 'architec',
+  },
+  {
+    title: 'Descrição',
+    dataIndex: 'description',
+    key: 'description',
+  },
 
-const OrderPage = () => {
+  {
+    title: 'Status',
+    dataIndex: 'status',
+    key: 'status',
+  },
+];
+
+const ServiceRequestPage = () => {
   return (
-    <OrderContainer>
-      <h1>Order Page</h1>
-    </OrderContainer>
+    <OrderServiceContainer>
+      <TableComponent columns={columns} data={undefined} />
+    </OrderServiceContainer>
   );
 };
 
-export default OrderPage;
+export default ServiceRequestPage;

@@ -15,12 +15,7 @@ export default function AppRouter() {
         <Route path="/" element={<MainLayout />}>
           <Route
             index
-            element={
-              <PrivateRoute
-                roles={[ROLE.ARCHITECT, ROLE.CUSTOMER]}
-                component={Home}
-              />
-            }
+            element={<PrivateRoute roles={[ROLE.CUSTOMER]} component={Home} />}
           />
 
           {/* Rotas do painel do Arquiteto */}
