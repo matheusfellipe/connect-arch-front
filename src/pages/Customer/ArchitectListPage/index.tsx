@@ -36,18 +36,18 @@ const columns = [
 const ArchitectListPage = () => {
   const { data } = useGetUserQuery();
 
-  // const tableRow = data?.map((architect) => {
-  //   return {
-  //     name: architect.name,
-  //     email: architect.email,
-  //     phone: architect.phone,
-  //     registry: architect.registry,
-  //     specialty: architect.specialty,
-  //   };
-  // });
+  const tableRow = data?.map((architect) => {
+    return {
+      name: architect.name,
+      email: architect.email,
+      phone: architect.phone,
+      registry: architect.registry,
+      specialty: architect.specialty,
+    };
+  });
   return (
     <ArchitectListContainer>
-      <TableComponent columns={columns} data={undefined} />
+      <TableComponent columns={columns} data={tableRow} />
     </ArchitectListContainer>
   );
 };
