@@ -2,7 +2,7 @@ import { api } from '../api';
 
 type ServiceStatus = 'requested' | 'accepted' | 'refused';
 
-export interface Customer {
+export interface User {
   name: string;
 }
 
@@ -11,7 +11,8 @@ export interface OrderService {
   description: string;
   architectId: string;
   customerId: string;
-  customer: Customer;
+  customer: User;
+  architect: User;
   isDeleted: boolean;
   status: ServiceStatus;
 }

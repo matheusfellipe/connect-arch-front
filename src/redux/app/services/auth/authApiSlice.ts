@@ -52,7 +52,7 @@ export const authApi = api.injectEndpoints({
     refresh: builder.mutation({
       query: () => ({
         url: '/auth/refresh-token',
-        method: 'GET',
+        method: 'PUT',
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
