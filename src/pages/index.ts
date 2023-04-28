@@ -1,8 +1,16 @@
 import Login from './Auth/Login';
 import Register from './Auth/Register';
 
+import ArchitectListPage from './Customer/ArchitectListPage';
+import ServicesRequestedPage from './Customer/ServicesRequestedPage';
+import ServicesOrderPage from './Architect/ServicesOrderPage';
 import Home from './Home';
-import OrderPage from './Customer/OrderPage';
-import ServiceRequestPage from './Architect/ServiceRequestPage';
 
-export { Home, Login, Register, OrderPage, ServiceRequestPage };
+export {
+  Home,
+  Login,
+  Register,
+  ArchitectListPage,
+  ServicesOrderPage,
+  ServicesRequestedPage,
+};

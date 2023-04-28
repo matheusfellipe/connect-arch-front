@@ -1,43 +1,12 @@
-import TableComponent from '../../shared/components/Table';
-import { CustomerHomeContainer } from './style';
+import { HomeContainer } from './style';
+import arquitetura from '../../shared/assets/images/arquitetura.jpg';
 
-const columns = [
-  {
-    title: 'Arquiteto',
-    dataIndex: 'architect',
-    key: 'architect',
-  },
-  {
-    title: 'Email',
-    dataIndex: 'email',
-    key: 'email',
-  },
-
-  {
-    title: 'Telefone',
-    dataIndex: 'phone',
-    key: 'phone',
-  },
-
-  {
-    title: 'CAU',
-    dataIndex: 'registry',
-    key: 'registry',
-  },
-
-  {
-    title: 'Especialidade',
-    dataIndex: 'specialty',
-    key: 'specialty',
-  },
-];
-
-const CustomerHomePage = () => {
+const HomePage = () => {
   return (
-    <CustomerHomeContainer>
-      <TableComponent columns={columns} data={undefined} />
-    </CustomerHomeContainer>
+    <HomeContainer>
+      <img src={arquitetura} />
+    </HomeContainer>
   );
 };
 
-export default CustomerHomePage;
+export default HomePage;

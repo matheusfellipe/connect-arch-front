@@ -6,7 +6,7 @@ type MenuItem = Required<MenuProps>['items'][number];
 export const architectItems: MenuItem[] = [
   {
     label: 'Serviços Solicitados',
-    key: '/request-services',
+    key: '/order-services',
     icon: <ShoppingCartOutlined />,
   },
 ];

@@ -1,5 +1,20 @@
 import { api } from '../api';
 
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  phone: string;
+  gender: string;
+  age: number;
+  registry?: string;
+  specialty?: string;
+  roleId: string;
+}
+
+type UsersResponse = User[];
+
 export const userApi = api.injectEndpoints({
   endpoints: (builder) => ({
     addNewUser: builder.mutation({
@@ -11,7 +26,12 @@ export const userApi = api.injectEndpoints({
         },
       }),
     }),
+    getUser: builder.query<UsersResponse, void>({
+      query: () => ({
+        url: 'users',
+      }),
+    }),
   }),
 });
 
-export const { useAddNewUserMutation } = userApi;
+export const { useAddNewUserMutation, useGetUserQuery } = userApi;

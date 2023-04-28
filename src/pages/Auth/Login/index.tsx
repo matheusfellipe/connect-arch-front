@@ -42,9 +42,8 @@ const Login = () => {
           },
           api,
         );
-        user && user.role == ROLE.CUSTOMER
-          ? navigate('/')
-          : navigate('/request-services');
+
+        navigate('/');
       }
     } catch (error) {
       openNotificationWithIcon(
